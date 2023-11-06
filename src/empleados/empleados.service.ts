@@ -67,4 +67,7 @@ export class EmpleadosService {
         this.empleados.push(emple);
         return "Empleado agregado exitosamente";
       }
+      modificarEmpleado(id: number, modelo: EmpleadoModel) {
+        return "Empleado modificado correctamente"
+      }
 }
