@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import {empleadoModel} from './empleadoModel'
+import {EmpleadoModel} from './empleadoModel'
 
 @Injectable()
 export class EmpleadosService {
@@ -50,10 +50,21 @@ export class EmpleadosService {
     }
 
 
-    getEmpleado(): string {
-        return 'Cosme Fulanito';
+    getEmpleado() {
+        return this.empleados;
       }
-      getEmpleadoById (identificador): string{
-        return 'Cosme Fulanito : ' + identificador ;
+    //   getEmpleadoById (id){
+    //     return this.empleados.id ;
+    //   }
+    agregarEmpleado(modelo: EmpleadoModel) {
+        let emple = {
+          "id": modelo.id,
+          "nombre": modelo.nombre,
+          "apellido": modelo.apellido,
+          "salario": modelo.salario
+        }
+        //Agrego el producto a la lista
+        this.empleados.push(emple);
+        return "Empleado agregado exitosamente";
       }
 }
