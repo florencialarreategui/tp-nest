@@ -1,11 +1,19 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post  } from '@nestjs/common';
 import { EmpleadosService } from './empleados.service';
+import {EmpleadoModel} from './empleadoModel'
 
 @Controller('empleados')
 export class EmpleadosController {
     constructor(private readonly Servicio: EmpleadosService) {}
-    @Get(':id')
-    getEmpleado(@Param('id') identificador): string {
-      return this.Servicio.getEmpleadoById (identificador);
+    // traigo empleados
+    @Get()
+    getEmpleado(){
+      return this.Servicio.getEmpleado;
+    }
+//modifico empleados
+    @Post ()
+    agregarEmpleado(@Body() modelo: EmpleadoModel) {
+        return this.Servicio.agregarEmpleado(modelo);
+
     }
 }
