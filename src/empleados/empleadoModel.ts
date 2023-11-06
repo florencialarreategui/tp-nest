@@ -1,5 +1,6 @@
 export class empleadoModel {
     id: number;
-    product: string;
-    price: number;
+    nombre: string;
+    apellido: string;
+    salario: number;
     }
