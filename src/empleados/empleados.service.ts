@@ -49,13 +49,14 @@ export class EmpleadosService {
       this.empleados.push(emple);
     }
 
-
+//muestro todos los empleados
     getEmpleado() {
         return this.empleados;
       }
-    //   getEmpleadoById (id){
-    //     return this.empleados.id ;
-    //   }
+      //quiero mostrar solo 1 empleado 
+      getEmpleadoById (id): string{
+        return 'Empleado número: ' + id;
+      }
     agregarEmpleado(modelo: EmpleadoModel) {
         let emple = {
           "id": modelo.id,
@@ -63,11 +64,17 @@ export class EmpleadosService {
           "apellido": modelo.apellido,
           "salario": modelo.salario
         }
-        //Agrego el producto a la lista
+        //Agrego empleado 
         this.empleados.push(emple);
         return "Empleado agregado exitosamente";
       }
+      //Modifico empleado 
       modificarEmpleado(id: number, modelo: EmpleadoModel) {
         return "Empleado modificado correctamente"
       }
+      //elimino empleado 
+      eliminarEmpleado(id:number){
+        return "Empleado eliminado exitosamente"
+      }
+
 }
