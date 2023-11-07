@@ -5,6 +5,7 @@ import {EmpleadoModel} from './empleadoModel'
 export class EmpleadosService {
     empleados = [];
     constructor (){
+      this.empleados = new Array<EmpleadoModel>
     let emple = {
         "id": 1,
         "nombre": "Carlos",
@@ -54,23 +55,37 @@ export class EmpleadosService {
         return this.empleados;
       }
       //quiero mostrar solo 1 empleado 
-      getEmpleadoById (id): string{
-        return 'Empleado número: ' + id;
+      getEmpleadoById (id:number){
+        let empleadoId = []
+        for(let i= 0; i > this.empleados.length; i++){
+          if(this.empleados[i].id == id){
+            empleadoId =this.empleados[i]
+          }
+        }
+        return empleadoId
       }
+
+       //Agrego empleado 
     agregarEmpleado(modelo: EmpleadoModel) {
-        let emple = {
+
+        let nuevoEmpleado = {
           "id": modelo.id,
           "nombre": modelo.nombre,
           "apellido": modelo.apellido,
           "salario": modelo.salario
         }
-        //Agrego empleado 
-        this.empleados.push(emple);
+       
+        this.empleados.push(nuevoEmpleado);
         return "Empleado agregado exitosamente";
       }
-      //Modifico empleado 
-      modificarEmpleado(id: number, modelo: EmpleadoModel) {
-        return "Empleado modificado correctamente"
+      //Modificar salario empleado 
+      modificarSalarioEmpleado(id: number, modelo: EmpleadoModel) {
+          for(let i= 0; i > this.empleados.length; i++){
+            if(this.empleados[i].id == id){
+              this.empleados[i]= modelo.salario
+            }
+          }
+        return "Salario modificado correctamente"
       }
       //elimino empleado 
       
