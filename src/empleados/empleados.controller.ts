@@ -4,31 +4,43 @@ import {EmpleadoModel} from './empleadoModel'
 
 @Controller('empleados')
 export class EmpleadosController {
-    constructor(private readonly Servicio: EmpleadosService) {}
+    constructor(private readonly servicio: EmpleadosService) {}
+
+    // private users = [
+    //     { id: 1, name: 'Usuario 1' },
+    //     { id: 2, name: 'Usuario 2' },
+    //   ];
+
+   
+    // @Get()
+    // getEmpleado(){
+    //   return this.users;
+    // }
+     
     // traigo todos los empleados
     @Get()
     getEmpleado(){
-      return this.Servicio.getEmpleado();
+      return this.servicio.getEmpleado();
     }
     // traigo solo 1 
-    @Get('id')
+    @Get(':id')
     getEmpleadoById(@Param('id') id: number) {
-        return this.Servicio.getEmpleadoById(id);
+        return this.servicio.getEmpleadoById(id);
     }
 //agrego empleados
     @Post ()
     agregarEmpleado(@Body() modelo: EmpleadoModel) {
-        return this.Servicio.agregarEmpleado(modelo);
+        return this.servicio.agregarEmpleado(modelo);
 
     }
     // modificar empleado 
-    @Put ()
-    modificarEmpleado (@Body() modelo: EmpleadoModel, @Param('id') id: number){
-        return this.Servicio.modificarEmpleado(id, modelo);
+    @Put (':id')
+    modificarSalarioEmpleado (@Body() modelo: EmpleadoModel, @Param('id') id: number){
+        return this.servicio.modificarSalarioEmpleado(id, modelo);
     }
     //elimino empleado 
-    @Delete('id')
+    @Delete(':id')
     eliminarEmpleado(@Param('id') id: number) {
-        return this.Servicio.eliminarEmpleado(id);
+        return this.servicio.eliminarEmpleado(id);
     }
 }
