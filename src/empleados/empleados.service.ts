@@ -73,7 +73,9 @@ export class EmpleadosService {
         return "Empleado modificado correctamente"
       }
       //elimino empleado 
+      
       eliminarEmpleado(id:number){
+    // recorrer array de empleados buscando el id 
         return "Empleado eliminado exitosamente"
       }
 

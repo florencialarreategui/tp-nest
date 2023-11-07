@@ -8,7 +8,7 @@ export class EmpleadosController {
     // traigo todos los empleados
     @Get()
     getEmpleado(){
-      return this.Servicio.getEmpleado;
+      return this.Servicio.getEmpleado();
     }
     // traigo solo 1 
     @Get('id')
