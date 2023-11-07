@@ -51,11 +51,11 @@ export class EmpleadosService {
     }
 
 //muestro todos los empleados
-    getEmpleado() {
+   public getEmpleado() {
         return this.empleados;
       }
       //quiero mostrar solo 1 empleado 
-      getEmpleadoById (id:number){
+    public  getEmpleadoById (id:number){
         let empleadoId = []
         for(let i= 0; i > this.empleados.length; i++){
           if(this.empleados[i].id == id){
@@ -66,7 +66,7 @@ export class EmpleadosService {
       }
 
        //Agrego empleado 
-    agregarEmpleado(modelo: EmpleadoModel) {
+   public agregarEmpleado(modelo: EmpleadoModel) {
 
         let nuevoEmpleado = {
           "id": modelo.id,
@@ -79,7 +79,7 @@ export class EmpleadosService {
         return "Empleado agregado exitosamente";
       }
       //Modificar salario empleado 
-      modificarSalarioEmpleado(id: number, modelo: EmpleadoModel) {
+    public  modificarSalarioEmpleado(id: number, modelo: EmpleadoModel) {
           for(let i= 0; i > this.empleados.length; i++){
             if(this.empleados[i].id == id){
               this.empleados[i]= modelo.salario
@@ -89,9 +89,14 @@ export class EmpleadosService {
       }
       //elimino empleado 
       
-      eliminarEmpleado(id:number){
-    // recorrer array de empleados buscando el id 
-        return "Empleado eliminado exitosamente"
+   public eliminarEmpleado(id:number){
+    let nuevaListaEmpleados = [] 
+    for(let i= 0; i > this.empleados.length; i++){
+      if(this.empleados[i].id !== id){
+        nuevaListaEmpleados = this.empleados[i]
+      }
+    }
+        return nuevaListaEmpleados
       }
 
 }
