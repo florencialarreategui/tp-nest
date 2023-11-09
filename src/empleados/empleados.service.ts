@@ -5,7 +5,6 @@ import {EmpleadoModel} from './empleadoModel'
 export class EmpleadosService {
     empleados = [];
     constructor (){
-      this.empleados = new Array<EmpleadoModel>
     let emple = {
         "id": 1,
         "nombre": "Carlos",
@@ -54,12 +53,20 @@ export class EmpleadosService {
    public getEmpleado() {
         return this.empleados;
       }
+
+
       //quiero mostrar solo 1 empleado 
-    public  getEmpleadoById (id:number){
-        let empleadoId = []
-        for(let i= 0; i > this.empleados.length; i++){
+    public  getEmpleadoById (id:number, modelo:EmpleadoModel ){
+    
+     let empleadoId= {
+      "id": modelo.id,
+      "nombre": modelo.nombre,
+      "apellido": modelo.apellido,
+      "salario": modelo.salario
+    }
+        for(let i= 0; i > this.empleados.length-1; i++){
           if(this.empleados[i].id == id){
-            empleadoId =this.empleados[i]
+           empleadoId=(this.empleados[i].modelo)
           }
         }
         return empleadoId
@@ -75,28 +82,28 @@ export class EmpleadosService {
           "salario": modelo.salario
         }
        
-        this.empleados.push(nuevoEmpleado);
-        return "Empleado agregado exitosamente";
+       this.empleados.push(nuevoEmpleado);
+        return "Empleado agregado correctamente"
       }
       //Modificar salario empleado 
-    public  modificarSalarioEmpleado(id: number, modelo: EmpleadoModel) {
-          for(let i= 0; i > this.empleados.length; i++){
+    public  modificarSalarioEmpleado(id: number, nuevoSalario: number) {
+        for(let i= 0; i > this.empleados.length-1; i++){
             if(this.empleados[i].id == id){
-              this.empleados[i]= modelo.salario
+            this.empleados[i].salario = nuevoSalario
             }
           }
-        return "Salario modificado correctamente"
+          return "Salario modificado correctamente"
       }
       //elimino empleado 
       
    public eliminarEmpleado(id:number){
-    let nuevaListaEmpleados = [] 
-    for(let i= 0; i > this.empleados.length; i++){
+    let nuevaListaEmpleados = []
+    for(let i= 0; i > this.empleados.length-1; i++){
       if(this.empleados[i].id !== id){
-        nuevaListaEmpleados = this.empleados[i]
+        nuevaListaEmpleados.push(this.empleados[i])
       }
     }
-        return nuevaListaEmpleados
+        return "Empleado eliminado correctamente"
       }
 
 }
