@@ -6,17 +6,6 @@ import {EmpleadoModel} from './empleadoModel'
 export class EmpleadosController {
     constructor(private readonly servicio: EmpleadosService) {}
 
-    // private users = [
-    //     { id: 1, name: 'Usuario 1' },
-    //     { id: 2, name: 'Usuario 2' },
-    //   ];
-
-   
-    // @Get()
-    // getEmpleado(){
-    //   return this.users;
-    // }
-     
     // traigo todos los empleados
     @Get()
     getEmpleado(){
@@ -24,8 +13,8 @@ export class EmpleadosController {
     }
     // traigo solo 1 
     @Get(':id')
-    getEmpleadoById(@Param('id') id: number) {
-        return this.servicio.getEmpleadoById(id);
+    getEmpleadoById(@Param('id') id: number, modelo: EmpleadoModel) {
+        return this.servicio.getEmpleadoById(id, modelo);
     }
 //agrego empleados
     @Post ()
@@ -35,8 +24,8 @@ export class EmpleadosController {
     }
     // modificar empleado 
     @Put (':id')
-    modificarSalarioEmpleado (@Body() modelo: EmpleadoModel, @Param('id') id: number){
-        return this.servicio.modificarSalarioEmpleado(id, modelo);
+    modificarSalarioEmpleado (@Body('salario') salario: number, @Param('id') id: number){
+        return this.servicio.modificarSalarioEmpleado(id, salario);
     }
     //elimino empleado 
     @Delete(':id')
