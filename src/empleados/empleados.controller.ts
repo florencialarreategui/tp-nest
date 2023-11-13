@@ -24,8 +24,8 @@ export class EmpleadosController {
     }
     // modificar empleado 
     @Put (':id/salario')
-    modificarSalarioEmpleado (@Body('salario') salario: number, @Param('id', ParseIntPipe ) id: number){
-        return this.servicio.modificarSalarioEmpleado(id, salario);
+    modificarSalarioEmpleado (@Body() empleado: EmpleadoModel, @Param('id', ParseIntPipe ) id: number){
+        return this.servicio.modificarSalarioEmpleado(id, empleado.salario);
     }
     //elimino empleado 
     @Delete(':id')
