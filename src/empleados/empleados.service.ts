@@ -83,8 +83,8 @@ export class EmpleadosService {
     // let  empleSalarioModificado = []
         for(let i= 0; i < this.empleados.length; i++){
             if(this.empleados[i].id == id){
-            salarioModificado =  this.empleados[i].salario
-            return this.empleados[i].salarioModificado
+              this.empleados[i].salario = salarioModificado  
+            return "Salario Modificado correctamente"
             }
           }
 
