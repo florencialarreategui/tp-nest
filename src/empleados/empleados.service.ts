@@ -98,6 +98,7 @@ export class EmpleadosService {
         nuevaListaEmpleados.push(this.empleados[i])
       }
     }
+    this.empleados = nuevaListaEmpleados
         return nuevaListaEmpleados
       }
 
